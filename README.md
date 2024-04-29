@@ -14,9 +14,9 @@
 
 CLIENT:
 
-import socket
+    import socket
 
-s=socket.socket()
+    s=socket.socket()
 
 s.bind(('localhost', 8000))
 
