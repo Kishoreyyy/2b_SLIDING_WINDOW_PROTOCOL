@@ -18,51 +18,51 @@ CLIENT:
 
     s=socket.socket()
 
-s.bind(('localhost', 8000))
+    s.bind(('localhost', 8000))
 
-s.listen(5)
+    s.listen(5)
 
-c,addr=s.accept()
+    c,addr=s.accept()
 
-size=int(input("Enter number of frames to send : "))
+    size=int(input("Enter number of frames to send : "))
 
-l=list(range(size))
+    l=list(range(size))
 
-s=int(input("Enter Window Size : "))
+    s=int(input("Enter Window Size : "))
 
-st=0
+    st=0
 
-i=0
+    i=0
 
-while True:
+    while True:
 
-   while(i<len(l)):
+        while(i<len(l)):
    
-       st+=s
+             st+=s
        
-       c.send(str(l[i:st]).encode())
+             c.send(str(l[i:st]).encode())
        
-       ack=c.recv(1024).decode()
+             ack=c.recv(1024).decode()
        
-       if ack:
+             if ack:
        
-          print(ack)
+                print(ack)
           
-          i+=s
+                i+=s
           
 SERVER:
 
-import socket
+       import socket
 
-s = socket.socket()
+       s = socket.socket()
 
-s.connect(('localhost', 8000))
+       s.connect(('localhost', 8000))
 
-while True:
+       while True:
 
-     print(s.recv(1024).decode())
+           print(s.recv(1024).decode())
      
-     s.send("Acknowledgement received from the client".encode())
+           s.send("Acknowledgement received from the client".encode())
 
 ## OUPUT
 
